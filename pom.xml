@@ -9,10 +9,10 @@
         <relativePath/>
     </parent>
     <groupId>br.com.altran</groupId>
-    <artifactId>carrinho</artifactId>
+    <artifactId>shopping-cart-java</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>carrinho</name>
-    <description>Carrinho de Compras</description>
+    <name>shopping-cart-java</name>
+    <description>Shopping Cart</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

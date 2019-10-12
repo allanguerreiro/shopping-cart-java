@@ -39,7 +39,7 @@ public class ItemController {
     private ResponseEntity create(@RequestBody ItemRequest itemRequest) {
         try {
             Item item = itemService.saveOrUpdate(itemRequest);
-            return new ResponseEntity<>(item, HttpStatus.OK);
+            return new ResponseEntity<>(item, HttpStatus.CREATED);
         } catch (Exception e) {
             log.error("Create Item method error {}", e.getMessage(), e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
