@@ -13,6 +13,7 @@ The shopping cart uses the following technologies to work:
 * Built with maven 3.2.5
 * MongoDB database embedded
 * SpringBoot 2.1.8 framework
+* Angular 8
 
 ### Remarks
 
