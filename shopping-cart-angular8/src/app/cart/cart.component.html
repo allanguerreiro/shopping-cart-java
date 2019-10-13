@@ -1,3 +1,4 @@
+<span>**When you adding a product on the basket, could you refresh the screen? Please...</span>
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h2>Cart</h2>
@@ -8,17 +9,20 @@
                 <tr>
                     <th>Name</th>
                     <th>Value</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of newItems | async">
+                <tr *ngFor="let item of newItems">
                     <td>{{item.name}}</td>
                     <td>R${{item.value}}</td>
+                    <td><button (click)="remCart(item)" class="btn btn-danger">Remove To Cart</button></td>
                 </tr>
             </tbody>
-        </table>
+        </table>        
         <div>
-            <button [disabled]="isDisabled" (click)="checkout(items)" class="btn btn-primary btn-lg">Checkout</button>
+            <button [disabled]="isDisabled" (click)="checkout()" class="btn btn-primary btn-lg">Checkout</button>
+            <button (click)="reload()" class="btn btn-primary btn-lg" style="margin-left: 10px">Reload</button>
         </div>
     </div>
 </div>

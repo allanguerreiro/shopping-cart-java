@@ -11,8 +11,9 @@ import { UpdateCustomerComponent } from './update-customer/update-customer.compo
 import { CreateCustomerComponent } from './create-customer/create-customer.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { StoreComponent } from './store/store.component';
-import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { FinishComponent } from './finish/finish.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,9 @@ import { CartComponent } from './cart/cart.component';
     CreateCustomerComponent,
     CustomerListComponent,
     StoreComponent,
-    CustomerLoginComponent,
-    CartComponent    
+    CartComponent,
+    CheckoutComponent,
+    FinishComponent    
   ],
   imports: [
     BrowserModule,

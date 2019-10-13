@@ -11,7 +11,7 @@
     </div>
 
     <div class="form-group">
-      <label for="name">E-mail</label>
+      <label for="email">E-mail</label>
       <input type="text" class="form-control" id="customerEmail" [(ngModel)]="customer.email" name="customerEmail" #customerEmail="ngModel" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
       <div *ngIf="customerEmail.invalid && (customerEmail.dirty || customerEmail.touched)"class="alert alert-danger">
           <div *ngIf="customerEmail.errors.required">E-mail is required.</div>

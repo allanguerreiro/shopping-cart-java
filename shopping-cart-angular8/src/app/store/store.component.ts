@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs";
-import { Item } from "../item";
+import { Observable } from 'rxjs';
+import { Item } from '../item';
 import { ItemsService } from '../items.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-store',
@@ -10,25 +11,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./store.component.css']
 })
 export class StoreComponent implements OnInit {
-
+  
   items: Observable<Item[]>;
-  item: Item = new Item();
-  newItems: Array<Item> = [];
 
-  constructor(private route: ActivatedRoute, private router: Router,
-    private itemService: ItemsService) { }
+  constructor(private router: Router, private itemService: ItemsService, private cartSevice: CartService) { }
 
   ngOnInit() {
     this.items = this.itemService.getItemsList();
   }
 
-  addCart(item: any){
-    console.log("No addCart: " + JSON.stringify(item));
-    this.newItems.push(item);
-    console.log("No addCart: " + JSON.stringify(this.newItems));
-  }
-
-  remCart(){
-    console.log("No remCart: ");
+  addCart(item: any) {
+    this.cartSevice.addItem(item);
   }
 }

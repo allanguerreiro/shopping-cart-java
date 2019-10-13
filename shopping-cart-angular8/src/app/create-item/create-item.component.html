@@ -4,18 +4,18 @@
 
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="itemName" required [(ngModel)]="item.name" name="itemName">
+      <input type="text" class="form-control" id="itemName" required [(ngModel)]="item.name" name="itemName" #itemName="ngModel">
       <div *ngIf="itemName.invalid && (itemName.dirty || itemName.touched)"class="alert alert-danger">
-          <div *ngIf="itemName.errors.required">Name is required.</div>
-        </div>
+        <div *ngIf="itemName.errors.required">Name is required.</div>
+      </div>
     </div>
 
     <div class="form-group">
-      <label for="name">Value</label>
-      <input type="text" class="form-control" id="itemValue" required [(ngModel)]="item.value" name="itemValue">
+      <label for="value">Value</label>
+      <input type="text" class="form-control" id="itemValue" [(ngModel)]="item.value" name="itemValue" #itemValue="ngModel" required>
       <div *ngIf="itemValue.invalid && (itemValue.dirty || itemValue.touched)"class="alert alert-danger">
           <div *ngIf="itemValue.errors.required">Value is required.</div>
-        </div>
+      </div>
     </div>
 
     <button type="submit" class="btn btn-success">Submit</button>
