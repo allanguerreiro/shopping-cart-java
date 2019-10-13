@@ -1,4 +1,4 @@
-package br.com.altran.carrinho;
+package br.com.altran.carrinho.repository;
 
 import br.com.altran.carrinho.model.Customer;
 import br.com.altran.carrinho.repository.CustomerRepository;
@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ItemMongoRepositoryTest {
+public class CustomerMongoRepositoryTest {
 
     @Autowired
     private CustomerRepository customerRepository;
@@ -28,7 +28,7 @@ public class ItemMongoRepositoryTest {
         Customer customerA = new Customer(null, "Allan Carneiro", "allancarneiro@gmail.com");
         Customer customerB = new Customer(null, "Allan Guerreiro", "allanguerreiro@gmail.com");
 
-        //save user, verify has ID value after save
+        //save customer, verify has ID value after save
         assertNull(customerA.getId());
         assertNull(customerB.getId());
         log.debug("Customer A id before save {}", customerA.getId());
@@ -46,7 +46,6 @@ public class ItemMongoRepositoryTest {
 
     @Test
     public void testFetchData() {
-        /*Get all products, list should only have two*/
         Iterable<Customer> users = customerRepository.findAll();
         assertNotNull(users);
         for (Customer customer : users) {
@@ -60,11 +59,11 @@ public class ItemMongoRepositoryTest {
     @Test
     public void testDataUpdate() {
         /*Test update*/
-        Customer customerB = customerRepository.findByName("Allan Guerreiro");
+        Customer customerB = customerRepository.findCustomerByName("Allan Guerreiro");
         customerB.setEmail("allanguerreiro@yahoo.com");
         customerRepository.save(customerB);
 
-        Customer customerUpdated = customerRepository.findByName("Allan Guerreiro");
+        Customer customerUpdated = customerRepository.findCustomerByName("Allan Guerreiro");
         assertNotNull(customerUpdated);
         assertEquals("allanguerreiro@yahoo.com", customerUpdated.getEmail());
     }

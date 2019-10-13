@@ -10,7 +10,9 @@ public interface ItemService {
 
     Item findByName(ItemRequest itemRequest);
 
+    Item findItemById(String id);
+
     Item saveOrUpdate(ItemRequest itemRequest);
 
-    void delete(ItemRequest itemRequest);
+    void delete(String id);
 }

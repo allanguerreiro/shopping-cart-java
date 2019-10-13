@@ -13,7 +13,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@CrossOrigin(methods = { RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE }, allowCredentials = "true", origins = "*", maxAge = 3600)
+@CrossOrigin(methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE}, allowCredentials = "true", origins = "*", maxAge = 3600)
 @RequestMapping("/api/v1/item")
 public class ItemController {
 
@@ -31,6 +31,28 @@ public class ItemController {
             return new ResponseEntity<>(items, HttpStatus.OK);
         } catch (Exception e) {
             log.error("Find Items method error {}", e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/itembyname")
+    private ResponseEntity getItemByName(@RequestBody ItemRequest itemRequest) {
+        try {
+            Item item = itemService.findByName(itemRequest);
+            return new ResponseEntity<>(item, HttpStatus.OK);
+        } catch (Exception e) {
+            log.error("Find Item by Name method error {}", e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/itembyid/{id}")
+    private ResponseEntity getItemById(@PathVariable(value = "id") String id) {
+        try {
+            Item item = itemService.findItemById(id);
+            return new ResponseEntity<>(item, HttpStatus.OK);
+        } catch (Exception e) {
+            log.error("Find Item by Id method error {}", e.getMessage(), e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -57,10 +79,10 @@ public class ItemController {
         }
     }
 
-    @DeleteMapping(value = "/delete")
-    private ResponseEntity delete(@RequestBody ItemRequest itemRequest) {
+    @DeleteMapping(value = "/delete/{id}")
+    private ResponseEntity delete(@PathVariable(value = "id") String id) {
         try {
-            itemService.delete(itemRequest);
+            itemService.delete(id);
             return new ResponseEntity<>("Success to remove Item!", HttpStatus.OK);
         } catch (Exception e) {
             log.error("Erro no delete {}", e.getMessage(), e);

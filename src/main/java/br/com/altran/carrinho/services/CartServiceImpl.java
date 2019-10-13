@@ -20,12 +20,12 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Cart saveOrUpdate(CartRequest cartRequest) {
+    public synchronized Cart saveOrUpdate(CartRequest cartRequest) {
         return cartRepository.save(cartRequestToCart.convert(cartRequest));
     }
 
     @Override
-    public Cart findCartByCustomerId(CartRequest cartRequest) {
+    public synchronized Cart findCartByCustomerId(CartRequest cartRequest) {
         return cartRepository.findCartByCustomerId(cartRequest.getCustomerId());
     }
 }

@@ -10,7 +10,9 @@ public interface CustomerService {
 
     Customer saveOrUpdate(CustomerRequest customerRequest);
 
-    Customer findByName(CustomerRequest customerRequest);
+    Customer findCustomerByName(String name);
 
-    void delete(CustomerRequest customerRequest);
+    Customer findCustomerByEmail(String email);
+
+    void delete(String id);
 }

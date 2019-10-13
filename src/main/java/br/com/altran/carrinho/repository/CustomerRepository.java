@@ -10,5 +10,7 @@ import java.util.List;
 public interface CustomerRepository extends MongoRepository<Customer, String> {
     List<Customer> findAll();
 
-    Customer findByName(String name);
+    Customer findCustomerByName(String name);
+
+    Customer findCustomerByEmail(String email);
 }

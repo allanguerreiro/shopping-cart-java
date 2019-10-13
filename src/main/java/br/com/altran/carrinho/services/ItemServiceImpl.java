@@ -22,22 +22,27 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<Item> findAll() {
+    public synchronized List<Item> findAll() {
         return itemRepository.findAll();
     }
 
     @Override
-    public Item saveOrUpdate(ItemRequest itemRequest) {
+    public synchronized Item saveOrUpdate(ItemRequest itemRequest) {
         return itemRepository.save(itemRequestToItem.convert(itemRequest));
     }
 
     @Override
-    public void delete(ItemRequest itemRequest) {
-        itemRepository.delete(itemRequestToItem.convert(itemRequest));
+    public synchronized void delete(String id) {
+        itemRepository.deleteById(id);
     }
 
     @Override
-    public Item findByName(ItemRequest itemRequest) {
+    public synchronized Item findByName(ItemRequest itemRequest) {
         return itemRepository.findByName(itemRequest.getName());
+    }
+
+    @Override
+    public synchronized Item findItemById(String id) {
+        return itemRepository.findItemById(id);
     }
 }

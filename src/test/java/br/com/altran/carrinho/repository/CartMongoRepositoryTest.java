@@ -1,4 +1,4 @@
-package br.com.altran.carrinho;
+package br.com.altran.carrinho.repository;
 
 import br.com.altran.carrinho.model.Cart;
 import br.com.altran.carrinho.model.Customer;
@@ -41,7 +41,7 @@ public class CartMongoRepositoryTest {
     public void setUp() throws Exception {
         Customer customer = new Customer(null, "Allan Carneiro", "allancarneiro@gmail.com");
         customerRepository.save(customer);
-        customer = customerRepository.findByName("Allan Carneiro");
+        customer = customerRepository.findCustomerByName("Allan Carneiro");
 
         Item itemA = new Item(null, "Celular Motorola", 1000.0D);
         itemRepository.save(itemA);
@@ -66,7 +66,6 @@ public class CartMongoRepositoryTest {
 
     @Test
     public void testFetchData() {
-        /*Get all products, list should only have two*/
         Iterable<Cart> carts = cartRepository.findAll();
         assertNotNull(carts);
         for (Cart cart : carts) {
@@ -79,7 +78,7 @@ public class CartMongoRepositoryTest {
     @Test
     public void testDataUpdate() {
         /*Test update*/
-        Customer customer = customerRepository.findByName("Allan Carneiro");
+        Customer customer = customerRepository.findCustomerByName("Allan Carneiro");
         Cart cart = cartRepository.findCartByCustomerId(customer.getId());
 
         for (Item item : cart.getItems()) {
