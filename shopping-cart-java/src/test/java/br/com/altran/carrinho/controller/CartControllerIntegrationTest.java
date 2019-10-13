@@ -20,7 +20,7 @@ import static org.junit.Assert.assertNotNull;
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class CustomerControllerIntegrationTest {
+public class CartControllerIntegrationTest {
 
     @Autowired
     private TestRestTemplate restTemplate;

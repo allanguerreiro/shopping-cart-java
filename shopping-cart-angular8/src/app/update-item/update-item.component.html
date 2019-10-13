@@ -1,0 +1,22 @@
+<h3>Update Item</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="name">Id</label>
+      <input [disabled]="true" type="text" class="form-control" id="itemId" [(ngModel)]="item.id" name="itemId">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="itemName" required [(ngModel)]="item.name" name="itemName">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Value</label>
+      <input type="text" class="form-control" id="itemValue" required [(ngModel)]="item.value" name="itemValue">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>

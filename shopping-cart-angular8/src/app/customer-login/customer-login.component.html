@@ -1,0 +1,14 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Login Customer</h2>
+    </div>
+    <div style="width: 400px;">
+        <label for="name">E-mail</label>
+        <input type="text" class="form-control" id="customerEmail" required [(ngModel)]="customer.email" name="customerEmail">
+    </div>
+    <br/>
+    <div style="width: 400px;">
+        <button (click)="findCustomerByEmail(customer.email)" class="btn btn-info">Sign in</button>
+        <button (click)="createCustomer()" class="btn btn-info" style="margin-left: 20px">Sign up</button>
+    </div>
+</div>

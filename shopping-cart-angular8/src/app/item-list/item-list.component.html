@@ -1,0 +1,26 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Item List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Value</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items | async">
+            <td>{{item.name}}</td>
+            <td>R${{item.value}}</td>
+            <td>
+                <button (click)="updateItem(item.id)" class="btn btn-info">Update</button>
+                <button (click)="deleteItem(item.id)" class="btn btn-danger" style="margin-left: 10px">Delete</button>                
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

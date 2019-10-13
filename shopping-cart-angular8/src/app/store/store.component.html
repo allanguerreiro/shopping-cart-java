@@ -1,0 +1,29 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Store</h2>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items | async">
+                    <td>{{item.name}}</td>
+                    <td>R${{item.value}}</td>
+                    <td>
+                        <button (click)="addCart(item)" class="btn btn-primary">Add To Cart</button>
+                        <button (click)="remCart(item.id)" class="btn btn-danger" style="margin-left: 10px">Remove To Cart</button>                
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="panel panel-primary">
+    <app-cart></app-cart>
+</div>

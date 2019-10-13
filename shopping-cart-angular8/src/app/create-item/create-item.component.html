@@ -1,0 +1,23 @@
+<h3>Create New Item</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">  
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="itemName" required [(ngModel)]="item.name" name="itemName">
+      <div *ngIf="itemName.invalid && (itemName.dirty || itemName.touched)"class="alert alert-danger">
+          <div *ngIf="itemName.errors.required">Name is required.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Value</label>
+      <input type="text" class="form-control" id="itemValue" required [(ngModel)]="item.value" name="itemValue">
+      <div *ngIf="itemValue.invalid && (itemValue.dirty || itemValue.touched)"class="alert alert-danger">
+          <div *ngIf="itemValue.errors.required">Value is required.</div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
