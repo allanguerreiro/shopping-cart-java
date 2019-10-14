@@ -43,11 +43,11 @@ public class CartMongoRepositoryTest {
         customerRepository.save(customer);
         customer = customerRepository.findCustomerByName("Allan Carneiro");
 
-        Item itemA = new Item(null, "Celular Motorola", 1000.0D);
+        Item itemA = new Item(null, "Celular Motorola", 1000.0D, 1);
         itemRepository.save(itemA);
         itemA = itemRepository.findByName("Celular Motorola");
 
-        Item itemB = new Item(null, "Monitor LG", 1500.0D);
+        Item itemB = new Item(null, "Monitor LG", 1500.0D, 1);
         itemRepository.save(itemB);
         itemB = itemRepository.findByName("Monitor LG");
 

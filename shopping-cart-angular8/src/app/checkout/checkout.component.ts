@@ -26,6 +26,7 @@ export class CheckoutComponent implements OnInit {
     console.log("Da session anterior: " + cartSession);
     if(cartSession != null) {
       this.items = JSON.parse(cartSession);
+      this.items = this.items.sort((a, b) => a.value - b.value);
     }
     
     for(var i = 0; i < this.items.length; i++) {

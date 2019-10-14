@@ -34,12 +34,12 @@ public class Application {
         @Override
         public void run(String... args) throws Exception {
             customerRepository.save(new Customer(null, "Allan", "allan@gmail.com"));
-            itemRepository.save(new Item(null, "Celular", 1000.0));
-            itemRepository.save(new Item(null, "Bicicleta", 500.0));
-            itemRepository.save(new Item(null, "Caderno", 20.0));
-            itemRepository.save(new Item(null, "Caneta", 2.0));
-            itemRepository.save(new Item(null, "Borracha", 1.0));
-            itemRepository.save(new Item(null, "Apontador", 1.0));
+            itemRepository.save(new Item(null, "Celular", 1000.0, 1));
+            itemRepository.save(new Item(null, "Bicicleta", 500.0, 1));
+            itemRepository.save(new Item(null, "Caderno", 20.0, 1));
+            itemRepository.save(new Item(null, "Caneta", 2.0, 1));
+            itemRepository.save(new Item(null, "Borracha", 1.0, 1));
+            itemRepository.save(new Item(null, "Apontador", 1.0, 1));
         }
     }
 }

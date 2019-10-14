@@ -17,6 +17,7 @@ public class ItemRequestToItem implements Converter<ItemRequest, Item> {
         }
         item.setName(itemRequest.getName());
         item.setValue(itemRequest.getValue());
+        item.setQuantity(itemRequest.getQuantity());
         return item;
     }
 }

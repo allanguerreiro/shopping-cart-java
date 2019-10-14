@@ -9,10 +9,12 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 import { StoreComponent } from './store/store.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { FinishComponent } from './finish/finish.component';
+import { CartListComponent } from './cart-list/cart-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'store', pathMatch: 'full' },
   { path: 'store', component: StoreComponent },
+  { path: 'carts', component: CartListComponent },
   { path: 'finish', component: FinishComponent },
   { path: 'items', component: ItemListComponent },
   { path: 'customers', component: CustomerListComponent },

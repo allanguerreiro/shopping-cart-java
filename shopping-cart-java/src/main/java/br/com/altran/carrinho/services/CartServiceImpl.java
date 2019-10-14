@@ -7,6 +7,8 @@ import br.com.altran.carrinho.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CartServiceImpl implements CartService {
 
@@ -27,5 +29,10 @@ public class CartServiceImpl implements CartService {
     @Override
     public synchronized Cart findCartByCustomerId(CartRequest cartRequest) {
         return cartRepository.findCartByCustomerId(cartRequest.getCustomerId());
+    }
+
+    @Override
+    public List<Cart> findAllCarts() {
+        return cartRepository.findAll();
     }
 }

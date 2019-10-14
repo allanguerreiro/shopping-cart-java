@@ -9,6 +9,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Value</th>
+                    <th>Quantity</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -16,6 +17,7 @@
                 <tr *ngFor="let item of newItems">
                     <td>{{item.name}}</td>
                     <td>R${{item.value}}</td>
+                    <td>{{item.quantity}}</td>
                     <td><button (click)="remCart(item)" class="btn btn-danger">Remove To Cart</button></td>
                 </tr>
             </tbody>

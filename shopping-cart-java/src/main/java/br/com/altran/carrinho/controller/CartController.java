@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @CrossOrigin(methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST}, allowCredentials = "true", origins = "*", maxAge = 3600)
@@ -38,6 +40,17 @@ public class CartController {
         try {
             Cart cart = cartService.findCartByCustomerId(cartRequest);
             return new ResponseEntity<>(cart, HttpStatus.OK);
+        } catch (Exception e) {
+            log.error("Find Cart by Customer id method error {}", e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping(value = "/carts")
+    private ResponseEntity getCarts() {
+        try {
+            List<Cart> carts = cartService.findAllCarts();
+            return new ResponseEntity<>(carts, HttpStatus.OK);
         } catch (Exception e) {
             log.error("Find Cart by Customer id method error {}", e.getMessage(), e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

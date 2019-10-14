@@ -25,8 +25,8 @@ public class ItemMongoRepositoryTest {
 
     @Before
     public void setUp() throws Exception {
-        Item item1 = new Item(null, "Impressora", 650.00D);
-        Item item2 = new Item(null, "Computador", 3500.00D);
+        Item item1 = new Item(null, "Impressora", 650.00D, 1);
+        Item item2 = new Item(null, "Computador", 3500.00D, 1);
 
         //save item, verify has ID value after save
         assertNull(item1.getId());
@@ -52,6 +52,7 @@ public class ItemMongoRepositoryTest {
         /*Test update*/
         Item item = itemRepository.findByName("Impressora");
         item.setValue(2000.00D);
+        item.setQuantity(1);
         itemRepository.save(item);
 
         Item itemUpdated = itemRepository.findByName("Impressora");

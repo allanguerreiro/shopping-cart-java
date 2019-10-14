@@ -11,4 +11,5 @@ public class ItemRequest extends BaseRequest {
 
     private String name;
     private Double value;
+    private Integer quantity;
 }

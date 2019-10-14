@@ -12,9 +12,10 @@
 
     <div class="form-group">
       <label for="value">Value</label>
-      <input type="text" class="form-control" id="itemValue" [(ngModel)]="item.value" name="itemValue" #itemValue="ngModel" required>
+      <input type="text" class="form-control" id="itemValue" [(ngModel)]="item.value" name="itemValue" #itemValue="ngModel" required pattern="^-?([1-9]\d*)?$">
       <div *ngIf="itemValue.invalid && (itemValue.dirty || itemValue.touched)"class="alert alert-danger">
           <div *ngIf="itemValue.errors.required">Value is required.</div>
+          <div *ngIf="itemValue.errors.pattern">Invalid value.</div>
       </div>
     </div>
 

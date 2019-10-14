@@ -1,0 +1,37 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Cart List</h2>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Cart Id</th>
+                    <th>Customer Id</th>                                        
+                    <th colspan="2">Item Name</th>
+                    <th colspan="2">Item Value</th>
+                    <th colspan="2">Item Quantity</th>
+                    <th>Total Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let showCart of showCarts">
+                    <td>{{showCart.cartId}}</td>
+                    <td>{{showCart.customerId}}</td>
+                    <td colspan="6">
+                        <table class="table table-striped">                            
+                            <tbody>
+                                <tr *ngFor="let item of showCart.items">
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.value}}</td>
+                                    <td>{{item.quantity}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td>{{showCart.valorTotal}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

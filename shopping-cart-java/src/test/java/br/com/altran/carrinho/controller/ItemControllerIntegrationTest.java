@@ -54,6 +54,7 @@ public class ItemControllerIntegrationTest {
         Item item = new Item();
         item.setName("Mouse");
         item.setValue(100.00D);
+        item.setQuantity(1);
 
         ResponseEntity<Item> postResponse = restTemplate.postForEntity(getRootUrl() + "/api/v1/item/create", item, Item.class);
         assertNotNull(postResponse);
@@ -65,6 +66,7 @@ public class ItemControllerIntegrationTest {
         Item item = restTemplate.getForObject(getRootUrl() + "/api/v1/item/itembyname/Celular", Item.class);
         item.setValue(800.00D);
         item.setName("Celular Updated");
+        item.setQuantity(1);
 
         restTemplate.put(getRootUrl() + "/api/v1/item/update", item);
 

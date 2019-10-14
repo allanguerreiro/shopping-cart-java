@@ -23,26 +23,28 @@ export class CartService {
     return this.http.get(`${this.baseUrl}/cartbycustomerid`, cart);
   }
 
+  getAllCarts(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/carts`);
+  }
+
   public addItem(item: Item): void {
-    console.log("lista: " + JSON.stringify(this.newItems));
-    console.log("no addItem do service: " + JSON.stringify(item));
     let product = this.newItems.find(i => i.id === item.id);
-    console.log("no addItem do service product: " + JSON.stringify(product));
     if (product === undefined) {
       product = new Item();
       product.id = item.id;
       product.value = item.value;
       product.name = item.name;
+      product.quantity = item.quantity;
       this.newItems.push(product);
     } else {
-      for( var i = 0; i < this.newItems.length; i++){
+      for( var i = 0; i < this.newItems.length; i++) {        
         if (this.newItems[i].id === item.id) {
-          this.newItems[i].value += this.newItems[i].value;
+          this.newItems[i].quantity = this.newItems[i].quantity + 1;
+          this.newItems[i].value = this.newItems[i].value * this.newItems[i].quantity;
         }
       }
     }
     
-    console.log("Tamanho da lista: " + this.newItems.length);
     sessionStorage.clear();
     sessionStorage.setItem("cart", JSON.stringify(this.newItems));
   }

@@ -35,10 +35,10 @@ public class ItemController {
         }
     }
 
-    @GetMapping("/itembyname")
-    private ResponseEntity getItemByName(@RequestBody ItemRequest itemRequest) {
+    @GetMapping("/itembyname/{name}")
+    private ResponseEntity getItemByName(@PathVariable(value = "name") String name) {
         try {
-            Item item = itemService.findByName(itemRequest);
+            Item item = itemService.findByName(name);
             return new ResponseEntity<>(item, HttpStatus.OK);
         } catch (Exception e) {
             log.error("Find Item by Name method error {}", e.getMessage(), e);

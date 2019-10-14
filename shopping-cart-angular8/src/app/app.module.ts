@@ -14,6 +14,7 @@ import { StoreComponent } from './store/store.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { FinishComponent } from './finish/finish.component';
+import { CartListComponent } from './cart-list/cart-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FinishComponent } from './finish/finish.component';
     StoreComponent,
     CartComponent,
     CheckoutComponent,
-    FinishComponent    
+    FinishComponent,
+    CartListComponent    
   ],
   imports: [
     BrowserModule,

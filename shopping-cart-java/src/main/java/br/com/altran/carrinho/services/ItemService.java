@@ -8,7 +8,7 @@ import java.util.List;
 public interface ItemService {
     List<Item> findAll();
 
-    Item findByName(ItemRequest itemRequest);
+    Item findByName(String name);
 
     Item findItemById(String id);
 

@@ -37,8 +37,8 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public synchronized Item findByName(ItemRequest itemRequest) {
-        return itemRepository.findByName(itemRequest.getName());
+    public synchronized Item findByName(String name) {
+        return itemRepository.findByName(name);
     }
 
     @Override
