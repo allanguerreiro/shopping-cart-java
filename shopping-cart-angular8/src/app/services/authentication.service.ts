@@ -9,7 +9,7 @@ import { User } from '../models';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
-
+    private url = 'http://localhost:8080/api/v1/user/authenticate';
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
@@ -19,11 +19,12 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
-    login(username: string, password: string) {
-        return this.http.post<any>(`/users/authenticate`, { username, password })
+    login(user: Object) {
+        return this.http.post<any>(`${this.url}`, user)
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
+                console.log(JSON.stringify(user));
                 this.currentUserSubject.next(user);
                 return user;
             }));
