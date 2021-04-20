@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ItemListComponent } from './item-list/item-list.component';
@@ -10,9 +11,12 @@ import { StoreComponent } from './store/store.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { FinishComponent } from './finish/finish.component';
 import { CartListComponent } from './cart-list/cart-list.component';
+import { LoginComponent } from './login';
+import { AuthGuard } from './helpers';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'store', pathMatch: 'full' },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
   { path: 'store', component: StoreComponent },
   { path: 'carts', component: CartListComponent },
   { path: 'finish', component: FinishComponent },

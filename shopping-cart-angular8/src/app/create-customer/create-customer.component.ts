@@ -20,7 +20,7 @@ export class CreateCustomerComponent implements OnInit {
   ngOnInit() {
   }
 
-  newItem(): void {
+  newCustomer(): void {
     this.submitted = false;
     this.customer = new Customer();
   }

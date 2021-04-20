@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ItemListComponent } from './item-list/item-list.component';
@@ -15,6 +15,9 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { FinishComponent } from './finish/finish.component';
 import { CartListComponent } from './cart-list/cart-list.component';
+import { LoginComponent } from './login';
+import { JwtInterceptor, ErrorInterceptor } from './helpers';
+import { HomeComponent } from './home';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { CartListComponent } from './cart-list/cart-list.component';
     CartComponent,
     CheckoutComponent,
     FinishComponent,
-    CartListComponent    
+    CartListComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,10 @@ import { CartListComponent } from './cart-list/cart-list.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
