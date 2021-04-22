@@ -2,8 +2,10 @@ package br.com.altran.carrinho;
 
 import br.com.altran.carrinho.model.Customer;
 import br.com.altran.carrinho.model.Item;
+import br.com.altran.carrinho.model.User;
 import br.com.altran.carrinho.repository.CustomerRepository;
 import br.com.altran.carrinho.repository.ItemRepository;
+import br.com.altran.carrinho.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,7 +15,6 @@ import org.springframework.context.annotation.ComponentScan;
 import javax.annotation.Resource;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"br.com.altran.carrinho*"})
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -24,6 +25,9 @@ public class Application {
 
     @Resource
     private ItemRepository itemRepository;
+
+    @Resource
+    private UserRepository userRepository;
 
     @Bean
     public CommandLineRunner populateReviews() {
@@ -40,6 +44,7 @@ public class Application {
             itemRepository.save(new Item(null, "Caneta", 2.0, 1));
             itemRepository.save(new Item(null, "Borracha", 1.0, 1));
             itemRepository.save(new Item(null, "Apontador", 1.0, 1));
+            userRepository.save(new User(null, "india", "123456"));
         }
     }
 }
